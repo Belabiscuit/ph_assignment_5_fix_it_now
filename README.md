@@ -22,10 +22,10 @@ Vetted technicians for plumbing, electrics, AC and more across Dhaka. Fixed pric
 
 | Resource | URL |
 | --- | --- |
-| 🌐 **Live Frontend** | [https://fixiitnow-frontend.vercel.app/](https://fixiitnow-frontend.vercel.app/) |
-| ⚙️ **Backend API** | [https://fixitnow-two.vercel.app/](https://fixitnow-two.vercel.app/) |
-| 🐙 **Frontend Repo** | [github.com/MasadRayan/Fix_It_now_Frontend](https://github.com/MasadRayan/Fix_It_now_Frontend) |
-| 🔗 **Backend Repo** | [github.com/MasadRayan/FixItNow-Backend](https://github.com/MasadRayan/FixItNow-Backend) |
+| 🌐 **Live Frontend** | [/]() |
+| ⚙️ **Backend API** | [https://ph-fixit.vercel.app/](https://ph-fixit.vercel.app) |
+| 🐙 **Frontend Repo** | []() |
+| 🔗 **Backend Repo** | []() |
 
 ---
 
