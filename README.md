@@ -22,9 +22,9 @@ Vetted technicians for plumbing, electrics, AC and more across Dhaka. Fixed pric
 
 | Resource | URL |
 | --- | --- |
-| 🌐 **Live Frontend** | [/]() |
+| 🌐 **Live Frontend** | []() |
 | ⚙️ **Backend API** | [https://ph-fixit.vercel.app/](https://ph-fixit.vercel.app) |
-| 🐙 **Frontend Repo** | []() |
+| 🐙 **Frontend Repo** | [https://github.com/Belabiscuit/ph_assignment_5_fix_it_now](https://github.com/Belabiscuit/ph_assignment_5_fix_it_now) |
 | 🔗 **Backend Repo** | []() |
 
 ---
