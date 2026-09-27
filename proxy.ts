@@ -33,7 +33,10 @@ function decodeJwtRole(token: string): string | null {
     const padded = b64.padEnd(Math.ceil(b64.length / 4) * 4, "=");
     const decoded = JSON.parse(
       Buffer.from(padded, "base64").toString("utf-8")
-    ) as { role?: string };
+    ) as { role?: string; exp?: number };
+    if (typeof decoded.exp === "number" && decoded.exp * 1000 <= Date.now()) {
+      return null;
+    }
     return decoded.role ?? null;
   } catch {
     return null;

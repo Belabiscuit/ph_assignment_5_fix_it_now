@@ -10,7 +10,7 @@ import {
 } from "react";
 import { usePathname } from "next/navigation";
 import { useQueryClient } from "@tanstack/react-query";
-import { apiFetch, setToken } from "@/lib/api-client";
+import { apiFetch, ApiClientError, setToken } from "@/lib/api-client";
 import type { AuthTokens, User } from "@/lib/types";
 
 export type AuthStatus = "loading" | "authenticated" | "unauthenticated";
@@ -34,26 +34,38 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUserState] = useState<User | null | undefined>(undefined);
   const [refreshKey, setRefreshKey] = useState(0);
 
+  const clearUnauthorizedSession = useCallback(() => {
+    setToken(null);
+    setUserState(null);
+  }, []);
+
   const fetchUser = useCallback(async () => {
     try {
       const next = await apiFetch<User>("/api/auth/me");
       setUserState(next);
-    } catch {
+    } catch (error) {
+      if (error instanceof ApiClientError && error.status === 401) {
+        clearUnauthorizedSession();
+        return;
+      }
       setUserState((prev) => (prev === undefined ? null : prev));
     }
-  }, []);
+  }, [clearUnauthorizedSession]);
 
   useEffect(() => {
     const controller = new AbortController();
     apiFetch<User>("/api/auth/me", { signal: controller.signal })
       .then(setUserState)
       .catch((error) => {
-        if ((error as Error)?.name !== "AbortError") {
-          setUserState((prev) => (prev === undefined ? null : prev));
+        if ((error as Error)?.name === "AbortError") return;
+        if (error instanceof ApiClientError && error.status === 401) {
+          clearUnauthorizedSession();
+          return;
         }
+        setUserState((prev) => (prev === undefined ? null : prev));
       });
     return () => controller.abort();
-  }, [pathname, refreshKey]);
+  }, [pathname, refreshKey, clearUnauthorizedSession]);
 
   const refresh = useCallback(async () => {
     setRefreshKey((key) => key + 1);

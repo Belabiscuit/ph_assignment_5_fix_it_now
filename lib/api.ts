@@ -18,17 +18,29 @@ export async function getAccessToken(): Promise<string | null> {
   return cookie ? decodeCookieValue(cookie) : null;
 }
 
-export function decodeJwtRole(token: string): string | null {
+type JwtClaims = {
+  role?: string;
+  exp?: number;
+};
+
+function decodeJwtClaims(token: string): JwtClaims | null {
   try {
     const payload = token.split(".")[1];
     if (!payload) return null;
     const decoded = JSON.parse(
       Buffer.from(payload, "base64url").toString("utf-8")
-    ) as { role?: string };
-    return decoded.role ?? null;
+    ) as JwtClaims;
+    if (typeof decoded.exp === "number" && decoded.exp * 1000 <= Date.now()) {
+      return null;
+    }
+    return decoded;
   } catch {
     return null;
   }
+}
+
+export function decodeJwtRole(token: string): string | null {
+  return decodeJwtClaims(token)?.role ?? null;
 }
 
 export async function getRole(): Promise<string | null> {

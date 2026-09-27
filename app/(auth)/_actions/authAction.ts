@@ -16,7 +16,7 @@ export interface RegisterState {
 }
 
 const BACKEND_URL =
-  process.env.BACKEND_URL ?? "https://ph-fixit.vercel.app";
+  process.env.BACKEND_URL ?? "https://fixitnowbackend-phi.vercel.app";
 
 function readField(formData: FormData, key: string): string {
   const value = formData.get(key);

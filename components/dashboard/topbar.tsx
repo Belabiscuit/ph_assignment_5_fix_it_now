@@ -2,6 +2,7 @@
 
 import { usePathname } from "next/navigation";
 import type { User } from "@/lib/types";
+import { formatTodayBadge } from "@/lib/utils";
 import { breadcrumb, sectionTitle } from "./nav";
 import { ThemeToggle } from "@/components/theme-toggle";
 
@@ -16,14 +17,7 @@ export function Topbar({
 }) {
   const pathname = usePathname();
 
-  const today = new Date()
-    .toLocaleDateString("en-GB", {
-      weekday: "short",
-      day: "2-digit",
-      month: "short",
-    })
-    .toUpperCase()
-    .replace(/\s+/g, " · ");
+  const today = formatTodayBadge();
 
   return (
     <header className="sticky top-0 z-30 border-b border-border bg-background/95 text-foreground shadow-sm backdrop-blur">
