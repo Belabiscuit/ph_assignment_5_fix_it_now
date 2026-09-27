@@ -119,7 +119,7 @@ fixiitnow_frontend/
 **1. Clone the frontend**
 
 ```bash
-git clone https://github.com/MasadRayan/Fix_It_now_Frontend
+git clone https://github.com/Belabiscuit/ph_assignment_5_fix_it_now.git
 cd fixiitnow_frontend
 ```
 
@@ -134,8 +134,8 @@ npm install
 Create a `.env.local` (see the provided `.env` example):
 
 ```env
-BACKEND_URL=https://fixitnow-two.vercel.app
-NEXT_PUBLIC_BACKEND_URL=https://fixitnow-two.vercel.app
+BACKEND_URL=https://fixitnowbackend-phi.vercel.app
+NEXT_PUBLIC_BACKEND_URL=https://fixitnowbackend-phi.vercel.app
 ```
 
 > Point `NEXT_PUBLIC_BACKEND_URL` to a locally running backend for full development.
@@ -169,8 +169,8 @@ Every endpoint consumed by this frontend — auth, categories, services, technic
 
 ## 🧑‍💻 Developer
 
-**Masad Rayan**
+**Mohammad Tohfaye Samdani**
 
-[![GitHub](https://img.shields.io/badge/GitHub-@MasadRayan-181717?logo=github&logoColor=white)](https://github.com/MasadRayan)
+[![GitHub](https://img.shields.io/badge/GitHub-@Samdani-181717?logo=github&logoColor=white)](https://github.com/Belabiscuit)
 
 Contributions, issues and feature requests are welcome — feel free to open a pull request or issue on the repository.
